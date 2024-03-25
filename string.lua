@@ -24,3 +24,19 @@ function string.lower(str)
 	end
 	return out
 end
+
+-- Converts a string into an array breaking at the delimiter
+function string.explode(str, delim)
+	local i = 0
+	local out = {}
+	repeat
+		if sub(str, i, i) == delim then
+			out[#out+1] = sub(str, 0, i-1)
+			str = sub(str, i+1)
+			i = -1
+		end
+		i += 1
+	until i == #str
+	out[#out+1] = str
+	return out
+end
